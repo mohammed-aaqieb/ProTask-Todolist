@@ -19,7 +19,7 @@ A professional Todo List Dashboard built with Flask & Vanilla JS. Features a pre
 
 1.  **Clone the repository**
     ```bash
-    git clone <your-repo-url>
+    git clone (https://github.com/mohammed-aaqieb/ProTask-Todolist.git)
     cd "Todo list"
     ```
 
