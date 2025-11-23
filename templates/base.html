@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTask | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+                <h2>ProTask</h2>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-filter="all">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-filter="todo">
+                    <i class="fa-regular fa-circle"></i>
+                    <span>To Do</span>
+                </a>
+                <a href="#" class="nav-item" data-filter="in_progress">
+                    <i class="fa-solid fa-spinner"></i>
+                    <span>In Progress</span>
+                </a>
+                <a href="#" class="nav-item" data-filter="done">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Completed</span>
+                </a>
+            </nav>
+
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <h4>My Workspace</h4>
+                    <p>Pro Plan</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer" class="modal-overlay hidden">
+        <div class="modal glass">
+            <div class="modal-header">
+                <h3 id="modalTitle">New Task</h3>
+                <button class="btn-close" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <input type="hidden" id="taskId">
+
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="formTitle" placeholder="What needs to be done?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="formDescription" rows="4" placeholder="Add details..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select id="formPriority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Due Date</label>
+                            <input type="datetime-local" id="formDueDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="formStatus">
+                                <option value="Todo">To Do</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

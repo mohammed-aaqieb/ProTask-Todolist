@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="top-bar glass">
+    <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search tasks...">
+    </div>
+    <div class="header-actions">
+        <div class="date-pill" id="currentDate"></div>
+        <button class="btn-primary" onclick="openModal()">
+            <i class="fa-solid fa-plus"></i>
+            <span>New Task</span>
+        </button>
+    </div>
+</header>
+
+<div class="dashboard-grid">
+    <!-- Stats Row -->
+    <div class="stats-row">
+        <div class="stat-card glass">
+            <div class="stat-icon blue">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="stat-info">
+                <h3 id="statTotal">0</h3>
+                <p>Total Tasks</p>
+            </div>
+        </div>
+        <div class="stat-card glass">
+            <div class="stat-icon orange">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="stat-info">
+                <h3 id="statPending">0</h3>
+                <p>Pending</p>
+            </div>
+        </div>
+        <div class="stat-card glass">
+            <div class="stat-icon green">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="stat-info">
+                <h3 id="statCompleted">0</h3>
+                <p>Completed</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tasks Section -->
+    <section class="tasks-section">
+        <div class="section-header">
+            <h2>My Tasks</h2>
+            <div class="view-options">
+                <button class="icon-btn active" title="Grid View"><i class="fa-solid fa-grid-2"></i></button>
+                <button class="icon-btn" title="List View"><i class="fa-solid fa-list"></i></button>
+            </div>
+        </div>
+
+        <div id="taskGrid" class="task-grid">
+            <!-- Tasks injected via JS -->
+        </div>
+    </section>
+</div>
+{% endblock %}
